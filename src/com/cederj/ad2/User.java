@@ -5,7 +5,9 @@ import java.util.ArrayList;
 public class User {
     private  int idade ;
     private  String nome;
-    public static ArrayList<User> users = new ArrayList<User>();
+    public  ArrayList<User> followers = new ArrayList<User>();
+    public  ArrayList<User> follow = new ArrayList<User>();
+
 
     User(){};
 
@@ -14,12 +16,24 @@ public class User {
         this.idade = idade;
     };
 
-    public User updateFollowers(String nome){
+    public  ArrayList<User> getFollowers() {
+        return this.followers;
+    }
+
+    public ArrayList<User> getFollow() {
+        return follow;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void updateFollowers(User f){
+        followers.add(f);
 
     }
 
-    public User updateFollow(String nome){
+    public void updateIFollow(String nome, String Ifollow){
 
     }
-
 }

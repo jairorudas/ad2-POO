@@ -13,24 +13,30 @@ public class Main {
         home = System.getProperty("user.home");
         File fileName = new java.io.File(home + "/IdeaProjects/cederj-ad2/src/com/cederj/ad2/users.txt");
 	    String line = null;
-	    TGrafo rede;
+
 
 	    try{
             FileReader filereader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(filereader);
 
-            User user;
+            Node user;
 
             while ((line = bufferedReader.readLine()) !=  null){
                 String[] data = line.split("\\s");
+                char number  = data[1].charAt(0);
 
-                if(data.length < 3 && data != null){
-                    user = new User(data[0], Integer.parseInt(data[1]));
-                    //TGrafo.addUser(user);
+                if(Character.isDigit(number) && data != null){
+                    user = new Node(data[0], Integer.parseInt(data[1]));
+                    Grap.nodes.add(user);
 
-
+                } else {
+                  Grap.setArista(data[0], data[1]);
                 }
             }
+
+            Node usr = Grap.findNode("Bruna");
+
+            //System.out.println(usr.connections);
 
             bufferedReader.close();
         }
@@ -40,6 +46,5 @@ public class Main {
         catch(IOException ex){
             System.out.println("Error ao ler o arquivo '" + fileName + "'");
         }
-
     }
 }

@@ -3,7 +3,7 @@ package com.cederj.ad2;
 public class respostas {
 
     public static int  numero_seguidores (TGrafo g, String nome){
-        return 0;
+        return 1;
     };
 
     public static void seguidores (TGrafo g, String nome){
