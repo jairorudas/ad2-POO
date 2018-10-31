@@ -11,14 +11,14 @@ public class Main {
     public static void main(String[] args) {
         String home;
         home = System.getProperty("user.home");
-        File fileName = new java.io.File(home + "/IdeaProjects/cederj-ad2/src/com/cederj/ad2/users.txt");
+        File fileName = new java.io.File(home + "/IdeaProjects/cederj-ad2/src/com/cederj/ad2/users-bkp.txt");
 	    String line = null;
+	    Grap grafo = new Grap();
 
 
 	    try{
             FileReader filereader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(filereader);
-
             Node user;
 
             while ((line = bufferedReader.readLine()) !=  null){
@@ -26,17 +26,14 @@ public class Main {
                 char number  = data[1].charAt(0);
 
                 if(Character.isDigit(number) && data != null){
-                    user = new Node(data[0], Integer.parseInt(data[1]));
-                    Grap.nodes.add(user);
+                    user = new Node(data[0].toLowerCase(), Integer.parseInt(data[1]));
+                    grafo.nodes.add(user);
 
                 } else {
-                  Grap.setArista(data[0], data[1]);
+                    grafo.setArista(data[0], data[1]);
                 }
             }
 
-            Node usr = Grap.findNode("Bruna");
-
-            //System.out.println(usr.connections);
 
             bufferedReader.close();
         }
@@ -46,5 +43,19 @@ public class Main {
         catch(IOException ex){
             System.out.println("Error ao ler o arquivo '" + fileName + "'");
         }
+
+        // Resposta para pergunta 1
+        System.out.println("O numero de seguidores é: ");
+        System.out.println(respostas.numero_seguidores(grafo, "pedro"));
+
+        // Resposta para pergunta 2
+        System.out.println("Os seguidores desse user são: ");
+        respostas.seguidores(grafo, "Pedro");
+
+        // Resposta para pergunta 3
+        System.out.println("Pessoa mais popular é: ");
+        System.out.println(respostas.mais_popular(grafo));
+
+
     }
 }

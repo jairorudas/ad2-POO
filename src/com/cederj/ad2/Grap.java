@@ -5,32 +5,45 @@ import java.util.Iterator;
 
 public class Grap {
 
-    public static ArrayList<Node> nodes = new ArrayList<Node>();
 
+    public  ArrayList<Node> nodes = new ArrayList<Node>();
 
-    public static Node findNode(String nome){
-        Node finded = new Node();
+    Grap(){};
 
-        for (Iterator<Node> iterator = nodes.iterator(); iterator.hasNext(); ) {
+    public Node findNode(String nome){
+        Node finded = null;
+//        for (int i = 0; i < nodes.size(); i++){
+//            if (nome.equals(nodes.get(i).getNome()) ) {
+//                finded = nodes.get(i);
+//
+//            }
+//        }
+//
+//        return finded;
+//
+//       for(Node n : nodes){
+//            if (nome.equals(n.getNome())) {
+//                finded =  n;
+//            }
+//        }
+//
+//        return finded;
+
+        for (Iterator<Node> iterator = this.nodes.iterator(); iterator.hasNext(); ) {
             Node n = iterator.next();
-            if (nome == n.getNome()) {
-                System.out.println(n.getNome());
+            if(nome.toLowerCase().equals(n.getNome())){
+                finded = n;
+                break;
             }
-        }
-
+          }
         return finded;
-
     }
 
-    public static void setArista(String nomeA, String nomeB){
+    public void setArista(String nomeA, String nomeB){
+        Node user1 = this.findNode(nomeA.toLowerCase());
+        Node user2 = this.findNode(nomeB.toLowerCase());
 
-        Node nodeA = findNode(nomeA);
-        Node nodeB = findNode(nomeB);
-
-        nodeA.setArista(nodeA,nodeB);
+        user1.setArista(user1, user2);
     }
 
-    public static ArrayList<Node> getNodes() {
-        return nodes;
-    }
 }
