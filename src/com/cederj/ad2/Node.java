@@ -6,6 +6,7 @@ public class Node{
     public String nome;
     public int idade;
     public ArrayList<Edge> connections = new ArrayList<Edge>();
+    public int NumeroSeguidores = 0;
 
     Node(){};
 
@@ -15,6 +16,7 @@ public class Node{
     }
 
     public void setArista(Node a, Node b){
+        b.NumeroSeguidores++;
         Edge arista = new Edge(a,b);
         this.connections.add(arista);
     }

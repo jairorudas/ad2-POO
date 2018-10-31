@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class respostas {
 
     public static int  numero_seguidores (Grap g, String nome){
-        return g.findNode(nome).connections.size();
+        return g.findNode(nome).NumeroSeguidores;
     };
 
     public static void seguidores (Grap g, String nome){
@@ -18,9 +18,20 @@ public class respostas {
     };
 
     public static String mais_popular (Grap g){
-        Node mostPopular;
+        Node mostPopular = null;
 
-        return "";
+
+        for(int i = 0; i < g.nodes.size(); i++ ){
+            if (i == 0){
+                mostPopular = g.nodes.get(i);
+            }
+            else{
+                if (mostPopular.connections.size() < g.nodes.get(i).connections.size()){
+                    mostPopular = g.nodes.get(i);
+                }
+            }
+        }
+        return mostPopular.getNome();
     };
 
     public static void seegue_mais_velho(Grap g){
