@@ -50,7 +50,7 @@ public class Main {
 
         // Resposta para pergunta 2
         System.out.println("Os seguidores desse user são: ");
-        respostas.seguidores(grafo, "Pedro");
+        respostas.seguidores(grafo, "Renata");
 
         // Resposta para pergunta 3
         System.out.println("Pessoa mais popular é: ");

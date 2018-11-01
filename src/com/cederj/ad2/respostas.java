@@ -5,15 +5,17 @@ import java.util.ArrayList;
 public class respostas {
 
     public static int  numero_seguidores (Grap g, String nome){
-        return g.findNode(nome).NumeroSeguidores;
+        return g.findNode(nome).connections.size();
     };
 
     public static void seguidores (Grap g, String nome){
-        Node seguidores = g.findNode(nome);
+        ArrayList<Node> fls = g.findNode(nome.toLowerCase()).followers;
 
-        for(Edge seg : seguidores.connections){
-            System.out.println(seg.end.getNome());
+        for(Node n : fls){
+            System.out.println(n.getNome());
         }
+
+
 
     };
 
